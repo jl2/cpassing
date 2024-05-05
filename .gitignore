@@ -1,0 +1,9 @@
+cpassing
+manifest.txt
+.api-key
+*.fasl
+*.*fsl
+*.abcl
+*.cls
+*.abcl-tmp
+*.so
