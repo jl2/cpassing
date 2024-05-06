@@ -44,8 +44,7 @@
     (cffi:with-pointer-to-vector-data (ptr my-array)
       (loop
         :for i fixnum :below (length my-array)
-            :collect (byte-at ptr i )))))
-
+        :collect (byte-at ptr i )))))
 
 (defun double-array-test (&rest args)
   (declare (optimize (speed 3)
