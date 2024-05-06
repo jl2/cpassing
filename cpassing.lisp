@@ -15,10 +15,10 @@
 
 (in-package :cpassing)
 
-(let ((cffi:*foreign-library-directories* (asdf:system-relative-pathname :cpassing "clib/")))
-  (cffi:define-foreign-library (clib-lib :search-path (asdf:system-relative-pathname :cpassing "clib/"))
-    (:unix (:or "libclib.so" "libclib" "clib"))
-    (t (:default "libclib"))))
+(cffi:define-foreign-library (clib-lib :search-path (asdf:system-relative-pathname :cpassing "clib/"))
+  (:darwin (:default "libclib.dylib"))
+  (:unix (:or "libclib.so" "libclib" "clib"))
+  (t (:default "libclib")))
 
 (cffi:use-foreign-library clib-lib)
 
@@ -43,7 +43,7 @@
                               :initial-contents args)))
     (cffi:with-pointer-to-vector-data (ptr my-array)
       (loop
-        :for i :below (length my-array)
+        :for i fixnum :below (length my-array)
             :collect (byte-at ptr i )))))
 
 
@@ -59,5 +59,5 @@
                               :initial-contents args)))
     (cffi:with-pointer-to-vector-data (ptr my-array)
       (loop
-        :for i :below (length my-array)
-            :collect (double-at ptr i )))))
+        :for i fixnum :below (length my-array)
+        :collect (double-at ptr i )))))
