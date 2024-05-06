@@ -26,8 +26,13 @@
 (in-suite :cpassing)
 
 (test byte-array
-      (is-equal (byte-array-test 1 2 3 99 98 100)
-                '(1 2 3 99 98 100)))
+  (is
+   (equal
+    '(1 2 3 99 98 100)
+    (byte-array-test 1 2 3 99 98 100))))
+
 (test double-array
-      (is-equal (byte-array-test 1.0d0 2.0d0 3.14d0 99.1321312d0 98434.232543d0 -100.12432d0)
-                '(1.0d0 2.0d0 3.0d0 99.1321312d0 98434.232543d0 -100.12432d0)))
+  (is
+   (equal
+    '(1.0d0 2.0d0 3.14d0 99.1321312d0 98434.232543d0 -100.12432d0)
+    (double-array-test 1.0d0 2.0d0 3.14d0 99.1321312d0 98434.232543d0 -100.12432d0))))
